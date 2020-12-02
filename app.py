@@ -85,7 +85,7 @@ def create_Contact():
     cur.execute('INSERT INTO contact (fullname,phone,email) VALUES(%s,%s,%s)',(fullname,phone,email))
     ction.commit()
     
-    return jsonify({"menssage":"Contacto agregado satisfactoriamente"})
+    return jsonify({"menssage":"Contact created successfully"})
 
 @app.route('/list_contact',methods=['GET'])
 def get_list():
@@ -115,7 +115,7 @@ def update(id):
     cur = ction.cursor()
     cur.execute ("UPDATE CONTACT  SET fullname=%s,email=%s, phone=%s  WHERE id=%s " ,(fullname,email,phone,id))
     ction.commit()
-    return  jsonify({"menssage":"Contacto modificado satisfactoriamente"})
+    return  jsonify({"menssage":"Contact Updated successfully"})
 
 @app.route('/remove/<string:id>',methods=['DELETE'])
 def remove(id):
@@ -124,7 +124,7 @@ def remove(id):
     cur.execute('DELETE FROM CONTACT WHERE id = {0}'.format(id))
     ction.commit()
     
-    return  jsonify({"menssage":"Contacto eliminado satisfactoriamente"})
+    return  jsonify({"menssage":"Contact Removed Successfully"})
 
 if __name__ == "__main__":
    app.run(debug=True)
