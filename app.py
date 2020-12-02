@@ -1,4 +1,4 @@
-from flask import Flask,flash,render_template,request,redirect,url_for
+from flask import Flask,flash,render_template,request,redirect,url_for,jsonify
 from flaskext.mysql import MySQL
 
 from forms import  RegistrationForm
@@ -37,6 +37,20 @@ def add_contact():
         flash ('Contact Added successfully')
     return redirect(url_for('index'))
 
+@app.route('/create_Contact', methods=['POST'])
+def create_Contact():
+
+    fullname = request.json['fullname']
+    phone = request.json ['phone']
+    email = request.json ['email']
+
+    ction = mysql.connect()
+    cur = ction.cursor()
+    cur.execute('INSERT INTO contact (fullname,phone,email) VALUES(%s,%s,%s)',(fullname,phone,email))
+    ction.commit()
+    
+    return jsonify({"menssage":"Contacto agregado satisfactoriamente"})
+   
 @app.route('/edit/<id>')
 def get_contact(id):
     ction = mysql.connect()
