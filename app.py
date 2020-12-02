@@ -13,6 +13,8 @@ mysql = MySQL(app)
 
 app.secret_key = 'mysecretkey'
 
+##ABM de contactos por medio de formulario##
+
 @app.route('/')
 def index():
     form = RegistrationForm(request.form)
@@ -69,7 +71,7 @@ def delete_contact(id):
     flash('Contact Removed Successfully')
     return redirect(url_for('index'))  
 
-# Funciones en formato json para manejar desde Postman  
+## ABM de contactos con funciones en formato json para manejar desde Postman##  
 
 @app.route('/create_Contact', methods=['POST'])
 def create_Contact():
