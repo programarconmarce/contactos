@@ -50,6 +50,12 @@ def create_Contact():
     ction.commit()
     
     return jsonify({"menssage":"Contacto agregado satisfactoriamente"})
+
+@app.route('/list_contact',methods=['GET'])
+def get_list():
+    contactos =contact .query.all()
+    list_contact = contactos 
+    return jsonify(list_contact)    
    
 @app.route('/edit/<id>')
 def get_contact(id):
