@@ -53,9 +53,12 @@ def create_Contact():
 
 @app.route('/list_contact',methods=['GET'])
 def get_list():
-    contactos =contact .query.all()
-    list_contact = contactos 
-    return jsonify(list_contact)    
+    ction = mysql.connect()
+    cur = ction.cursor()
+    cur.execute('SELECT * FROM CONTACT')
+    data = cur.fetchall()
+    #print (data)
+    return jsonify(contacts=data)  
    
 @app.route('/edit/<id>')
 def get_contact(id):
