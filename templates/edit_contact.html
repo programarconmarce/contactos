@@ -1,3 +1,7 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
 <form action="/update/{{contact.0}}" method="POST">
     <h2>Contactos</h2>
  
@@ -10,4 +14,4 @@
 
  </form>
  
- 
+{% endblock %} 
