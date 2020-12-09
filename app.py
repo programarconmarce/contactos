@@ -71,7 +71,7 @@ def delete_contact(id):
     flash('Contact Removed Successfully')
     return redirect(url_for('index'))  
 
-## ABM de contactos con funciones en formato json para manejar desde Postman##  
+## ABM de contactos con funciones en formato json para manejar desde Postman o Insomnia##  
 
 @app.route('/create_Contact', methods=['POST'])
 def create_Contact():
